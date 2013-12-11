@@ -44,8 +44,9 @@ public class Worker extends AbstractManageable {
             try {
                 AbstractMessage message;
                 message = (AbstractMessage) ois.readObject();
-
+                System.out.println("Worker Reception " + message.getType());
                 message.treatment();
+
             } catch (ClassNotFoundException e) {
                 WindowComponent.getInstance().getApiHmi()
                         .errorNotification("Network", e.getMessage());

@@ -258,7 +258,8 @@ public final class Controller {
 
 
     private String findBroadCastAddress(){
-        String brcstAddr = "172.22.255.255";
+        //String brcstAddr = "172.22.255.255";
+        String brcstAddr = "192.168.1.255";
         /*
         try {
             int index = 0;

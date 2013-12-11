@@ -70,7 +70,7 @@ public class Hermes extends AbstractManageable {
 
             oos.flush();
             socket.close();
-
+            System.out.println("HERMES TCP " + message.getType());
         } catch (IOException e) {
             WindowComponent.getInstance().getApiHmi()
                     .errorNotification("Network", e.getMessage());
@@ -79,10 +79,11 @@ public class Hermes extends AbstractManageable {
 
     private final void sendUdpMessage() {
         try {
-            final DatagramSocket socket = new DatagramSocket(
+            /* DatagramSocket socket = new DatagramSocket(
                     Controller.getInstance().getUDPNetworkListener().
-                            getPortListened(), InetAddress.getLocalHost());
-
+                            getPortListened(), InetAddress.getLocalHost());*/
+            DatagramSocket socket = new DatagramSocket(
+                    4446, InetAddress.getLocalHost());
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
             ObjectOutputStream oos = new ObjectOutputStream(baos);
@@ -102,6 +103,7 @@ public class Hermes extends AbstractManageable {
 
             oos.flush();
             socket.close();
+            System.out.println("HERMES UDP " + message.getType());
         } catch (IOException e) {
             WindowComponent.getInstance().getApiHmi()
                     .errorNotification("Network", e.getMessage());
